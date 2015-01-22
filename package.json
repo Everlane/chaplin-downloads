@@ -1,6 +1,6 @@
 {
   "name": "everlane-chaplin",
-  "version": "1.0.3",
+  "version": "1.0.3a",
   "description": "Chaplin.js",
   "main": "everlane-chaplin.js",
   "scripts": {
