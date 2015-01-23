@@ -1,5 +1,5 @@
 /*!
- * Chaplin 1.0.3a
+ * Chaplin 1.0.3b
  *
  * Chaplin may be freely distributed under the MIT license.
  * For all details and documentation:
@@ -3069,6 +3069,9 @@ var regDeps = function(Backbone, _) {
   });
   loader.register('underscore', function(exports, require, module) {
     module.exports = _;
+  });
+  loader.register('require', function(exports, require, module) {
+    module.exports = require;
   });
 };
 

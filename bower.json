@@ -1,12 +1,13 @@
 {
   "name": "everlane-chaplin",
   "repo": "Everlane/chaplin-downloads",
-  "version": "1.0.3a",
+  "version": "1.0.3b",
   "main": "everlane-chaplin.js",
   "scripts": [
     "everlane-chaplin.js"
   ],
   "dependencies": {
-    "backbone": "1.x"
+    "backbone": "1.x",
+    "requirejs": "2.1.1"
   }
 }
