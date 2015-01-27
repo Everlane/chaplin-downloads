@@ -1,5 +1,5 @@
 /*!
- * Chaplin 1.0.3c
+ * Chaplin 1.0.4
  *
  * Chaplin may be freely distributed under the MIT license.
  * For all details and documentation:
@@ -235,13 +235,11 @@ module.exports = mediator;
 
 });;loader.register('chaplin/dispatcher', function(e, r, module) {
 'use strict';
-var Backbone, Dispatcher, EventBroker, mediator, requirejs, utils, _;
+var Backbone, Dispatcher, EventBroker, mediator, utils, _;
 
 _ = loader('underscore');
 
 Backbone = loader('backbone');
-
-requirejs = loader('require');
 
 mediator = loader('chaplin/mediator');
 
@@ -300,15 +298,21 @@ module.exports = Dispatcher = (function() {
   };
 
   Dispatcher.prototype.loadController = function(name, handler) {
-    var fileName, moduleName;
+    var fileName, moduleName, _require;
     fileName = name + this.settings.controllerSuffix;
     moduleName = this.settings.controllerPath + fileName;
+
+    /*
+    We are masking require here so `urequire` doesn't pick up the following
+    calls to it, which are supposed to be dynamic requires, not compiled
+     */
+    _require = require;
     if (typeof define !== "undefined" && define !== null ? define.amd : void 0) {
-      return requirejs([moduleName], handler);
+      return _require([moduleName], handler);
     } else {
       return setTimeout((function(_this) {
         return function() {
-          return handler(requirejs(moduleName));
+          return handler(_require(moduleName));
         };
       })(this), 0);
     }
@@ -3069,9 +3073,6 @@ var regDeps = function(Backbone, _) {
   });
   loader.register('underscore', function(exports, require, module) {
     module.exports = _;
-  });
-  loader.register('require', function(exports, require, module) {
-    module.exports = require;
   });
 };
 

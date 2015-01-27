@@ -1,6 +1,6 @@
 {
   "name": "everlane-chaplin",
-  "version": "1.0.3c",
+  "version": "1.0.4",
   "description": "Chaplin.js",
   "main": "everlane-chaplin.js",
   "scripts": {
@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "backbone": "~1.1.2",
-    "underscore": "~1.6.0",
-    "requirejs": "~2.1.1"
+    "underscore": "~1.6.0"
   }
 }
